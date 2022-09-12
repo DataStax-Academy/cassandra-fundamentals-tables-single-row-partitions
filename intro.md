@@ -17,13 +17,13 @@
             <ul>
               <li><span class="scenario-description-attribute">Difficulty</span>: Beginner</li>
               <li><span class="scenario-description-attribute">Time</span>: 15 minutes</li>
-              <li><span class="scenario-description-attribute">Prerequisite</span>: <a href="https://www.datastax.com/learn/data-modeling-by-example/shopping-cart" target="_blank">how to create a data model for online shopping carts</a></li>
             </ul>
             <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
-              <li><span class="scenario-objective">Create tables for a shopping cart data use case</span></li>
-              <li><span class="scenario-objective">Populate tables with sample shopping cart data</span></li>
-              <li><span class="scenario-objective">Design and execute CQL queries over shopping cart data</span></li>
+              <li><span class="scenario-objective">Create tables using the CQL <code>CREATE TABLE</code> statement</span></li>
+              <li><span class="scenario-objective">Learn about tables with <i>single-row partitions</i></span></li>
+              <li><span class="scenario-objective">Understand the difference between <i>simple</i> and <i>composite</i> partition keys</span></li>
+              <li><span class="scenario-objective">Practice several useful CQL statements and CQL shell commands that work with tables</span></li>
             </ul>
       </div>
      </div>
