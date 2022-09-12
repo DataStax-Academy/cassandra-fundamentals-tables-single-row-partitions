@@ -24,14 +24,15 @@
         <br/>
         <div class="scenario-objectives">In this hands-on lab, you explored:</div>
         <ul>
-              <li><span class="scenario-objective">Schema design for a shopping cart data use case</span></li>
-              <li><span class="scenario-objective">Sample shopping cart data</span></li>
-              <li><span class="scenario-objective">CQL queries over shopping cart data</span></li>
+              <li><span class="scenario-objective">Tables and the CQL <code>CREATE TABLE</code> statement</span></li>
+              <li><span class="scenario-objective">Tables with <i>single-row partitions</i></span></li>
+              <li><span class="scenario-objective"><i>Simple</i> and <i>composite</i> partition keys</span></li>
+              <li><span class="scenario-objective">Useful CQL statements and CQL shell commands that work with tables</span></li>
         </ul>
         <div class="resources">Learn more about Cassandra on <a href="https://datastax.com/dev" target="_blank">datastax.com/dev</a>:</div>
         <ul>
+              <li><span class="resource"><a href="https://datastax.com/learning-series/cassandra-fundamentals" target="_blank">Cassandra Fundamentals</a></span></li>        
               <li><span class="resource"><a href="https://www.datastax.com/learn/data-modeling-by-example" target="_blank">Data Modeling by Example</a></span></li>
-              <li><span class="resource"><a href="https://datastax.com/learning-series/cassandra-fundamentals" target="_blank">Cassandra Fundamentals</a></span></li>
         </ul>
       </div>
      </div>
