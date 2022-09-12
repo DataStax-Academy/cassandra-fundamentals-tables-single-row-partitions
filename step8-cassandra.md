@@ -12,7 +12,7 @@
  <a href='command:katapod.loadPage?[{"step":"step7-cassandra"}]'
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
-<span class="step-count"> Step 8 of 10</span>
+<span class="step-count"> Step 8 of 9</span>
  <a href='command:katapod.loadPage?[{"step":"step9-cassandra"}]'
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
