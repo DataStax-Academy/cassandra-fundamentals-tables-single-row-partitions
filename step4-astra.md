@@ -31,6 +31,8 @@ as a *simple partition key*.
 | joe@datastax.com |  Joe |  25 |  2020-01-01 |
 | jen@datastax.com |  Jen |  27 |  2020-01-01 | 
 
+<br/>
+
 ✅ Create the table:
 ```
 CREATE TABLE users (

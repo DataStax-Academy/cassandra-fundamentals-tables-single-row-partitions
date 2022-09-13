@@ -30,6 +30,8 @@ with *single-row partitions* and a *composite partition key* is for you to defin
 | Johnny     | Depp       | 1963-06-09 |
 | Anne       | Hathaway   | 1982-11-12 | 
 
+<br/>
+
 ✅ Create the table:
 <details>
   <summary>Solution</summary>
@@ -45,6 +47,8 @@ CREATE TABLE actors (
 
 </details>
 
+<br/>
+
 ✅ Insert the rows:
 <details>
   <summary>Solution</summary>
@@ -58,6 +62,8 @@ VALUES ('Anne', 'Hathaway', '1982-11-12');
 
 </details>
 
+<br/>
+
 ✅ Retrieve one row:
 <details>
   <summary>Solution</summary>
@@ -69,6 +75,8 @@ WHERE first_name = 'Johnny'
 ```
 
 </details>
+
+<br/>
 
 ✅ Retrieve all rows:
 <details>

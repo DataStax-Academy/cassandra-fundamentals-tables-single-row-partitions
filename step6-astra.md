@@ -30,6 +30,8 @@ with *single-row partitions* and a *simple partition key* is for you to define.
 | Adventure |  A story about a protagonist who journeys to epic or distant places to accomplish something. |
 | Fantasy   |  A story about magic or supernatural forces. | 
 
+<br/>
+
 ✅ Create the table:
 <details>
   <summary>Solution</summary>
@@ -44,6 +46,8 @@ CREATE TABLE genres (
 
 </details>
 
+<br/>
+
 ✅ Insert the rows:
 <details>
   <summary>Solution</summary>
@@ -57,6 +61,8 @@ VALUES ('Fantasy', 'A story about magic or supernatural forces.');
 
 </details>
 
+<br/>
+
 ✅ Retrieve one row:
 <details>
   <summary>Solution</summary>
@@ -67,6 +73,8 @@ WHERE genre = 'Fantasy';
 ```
 
 </details>
+
+<br/>
 
 ✅ Retrieve all rows:
 <details>
