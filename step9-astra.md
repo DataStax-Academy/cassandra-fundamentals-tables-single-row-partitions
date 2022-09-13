@@ -20,21 +20,34 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Design query Q5</div>
+<div class="step-title">Working with tables</div>
 
-✅ Find all items and their subtotal for a cart with id `19925cc1-4f8b-4a44-b893-2a49a8434fc8`; order items by timestamp (desc):
+Try the following CQL shell commands and CQL statements that are applicable to tables. 
 
-<details>
-  <summary>Solution</summary>
-
+✅ List the names of all tables in the current keyspace:
 ```
-SELECT timestamp, item_id, item_price, 
-       quantity, cart_subtotal 
-FROM items_by_cart
-WHERE cart_id = 19925cc1-4f8b-4a44-b893-2a49a8434fc8; 
+DESCRIBE TABLES;
 ```
 
-</details>
+✅ Output all CQL statements that can be used to recreate the given table:
+```
+DESCRIBE TABLE movies;
+```
+
+✅ Alter the given table:
+```
+ALTER TABLE movies ADD country TEXT;
+```
+
+✅ Delete all rows from the table:
+```
+TRUNCATE movies;
+```
+
+✅ Remove the given table:
+```
+DROP TABLE movies;
+```
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

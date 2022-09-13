@@ -20,49 +20,46 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Design query Q1</div>
+<div class="step-title">Create table "users"</div>
 
-✅ Find id and name of an active shopping cart that belongs to user `jen`:
- 
-<details>
-  <summary>Solution 1 (preferred)</summary>
+Our first table will store information about users as shown below. To define 
+this table with *single-row partitions*, we can use `email`
+as a *simple partition key*.
 
+| email            | name | age | date_joined |
+|------------------|------|-----|-------------|
+| joe@datastax.com |  Joe |  25 |  2020-01-01 |
+| jen@datastax.com |  Jen |  27 |  2020-01-01 | 
+
+✅ Create the table:
 ```
--- Retrieve all carts for jen
--- and scan the result set
--- within an application
--- to find an active cart.
-SELECT user_id, cart_name, 
-       cart_id, cart_is_active
-FROM carts_by_user
-WHERE user_id = 'jen';
-```
-
-</details>
-
-<br/>
-
-<details>
-  <summary>Solution 2</summary>
-
-```
--- Retrieve all carts for jen
--- and scan the result set
--- within Cassandra
--- to find an active cart.
--- Note that this is a rare case of
--- scanning within a small partition
--- when ALLOW FILTERING 
--- might be acceptable. 
-SELECT user_id, cart_name, 
-       cart_id, cart_is_active
-FROM carts_by_user
-WHERE user_id = 'jen'
-  AND cart_is_active = true 
-ALLOW FILTERING;
+CREATE TABLE users (
+  email TEXT,
+  name TEXT,
+  age INT,
+  date_joined DATE,
+  PRIMARY KEY ((email))
+);
 ```
 
-</details>
+✅ Insert the rows:
+```
+INSERT INTO users (email, name, age, date_joined) 
+VALUES ('joe@datastax.com', 'Joe', 25, '2020-01-01');
+INSERT INTO users (email, name, age, date_joined) 
+VALUES ('jen@datastax.com', 'Jen', 27, '2020-01-01');
+```
+
+✅ Retrieve one row:
+```
+SELECT * FROM users
+WHERE email = 'joe@datastax.com';
+```
+
+✅ Retrieve all rows:
+```
+SELECT * FROM users;
+```
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

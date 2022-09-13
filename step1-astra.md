@@ -20,44 +20,20 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Connect to Astra DB and create a database</div>
+<div class="step-title">Tables, columns, data types, rows, partitions, keys, ordering</div>
 
-✅ Create an application token to access Astra. Skip this step is you already have a token.
+A *table* in Apache Cassandra™ shares many similarities with a table in a relational database. It has named *columns* with *data types* and *rows* with *values*. A *primary key* uniquely identifies a row in a table. 
 
-<ul>
-  <li>Sign in (or sign up) to your Astra account at <a href="https://astra.datastax.com" target="_blank">astra.datastax.com</a></li>
-  <li>Create an application token by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a></li>
-</ul>
+There are also important differences. In Cassandra, on one hand, a table is a set of *rows* containing values and, on the other hand,
+a table is also a set of *partitions* containing rows. Specifically, each row belongs to exactly one partition and each partition contains one or more rows. A *primary key* consists of a mandatory *partition key* and optional *clustering key*, where
+a partition key uniquely identifies a partition in a table and a clustering key uniquely identifies a row in a partition.
 
-You can reuse the same token in our other scenarios, too.
+A table with *single-row partitions* is a table where there is exactly one row per partition. A table 
+with single-row partitions defines a primary key to be equivalent to a partition key.  
 
-✅ Setup Astra CLI by providing your application token:
-```
-astra setup
-```
-
-✅ List your existing Astra DB databases:
-```
-astra db list
-```
-
-✅ Create database `data-modeling` and keyspace `shopping_cart_data` if they do not exist:
-```
-astra db create data-modeling -k shopping_cart_data --if-not-exist --wait
-```
-
-This operation may take a bit longer when creating a new database or resuming an existing hibernated database.
-
-✅ Verify that database `data-modeling` is `ACTIVE` and keyspace `shopping_cart_data` exists:
-```
-astra db get data-modeling
-```
-
-✅ Start the CQL shell and connect to database `data-modeling` and keyspace `shopping_cart_data`:
-```
-clear
-astra db cqlsh data-modeling -k shopping_cart_data
-```
+A table with *multi-row partitions* is a table where there can be one or more rows per partition. A table 
+with multi-row partitions defines a primary key to be a combination of both partition and clustering keys. Rows in the 
+same partition have the same partition key values and are *ordered* based on their clustering key values using the default ascendant order.
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

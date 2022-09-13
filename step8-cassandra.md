@@ -20,20 +20,46 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Design query Q3</div>
+<div class="step-title">What tables with single-row partitions are good for?</div>
 
-✅ Find all information about items with name `Chocolate Cake`:
+In Cassandra, tables are designed to support specific queries. Tables with 
+single-row partitions are generally used to store and retrieve entities 
+by their unique identifiers, such as retrieving a *user by email* or *movie by title and year*.
 
-<details>
-  <summary>Solution</summary>
-
+Of course, it is possible to use tables with 
+single-row partitions for relationships, such as *user rated movie* in the example below, but tables 
+with multi-row partitions are much more suitable for that. 
+ 
 ```
-SELECT * 
-FROM items_by_name
-WHERE name = 'Chocolate Cake';
-```
+-- Not a good way to 
+-- store relationships ... 
+CREATE TABLE user_rated_movie (
+  email TEXT,
+  title TEXT,
+  year INT,
+  rating INT,
+  PRIMARY KEY ((email, title, year))
+);
 
-</details>
+-- Tables with multi-row partitions 
+-- are the way to go ...
+-- Get all rating left by a user
+CREATE TABLE ratings_by_user (
+  email TEXT,
+  title TEXT,
+  year INT,
+  rating INT,
+  PRIMARY KEY ((email), title, year)
+);
+--  Get all ratings left for a movie
+CREATE TABLE ratings_by_movie (
+  email TEXT,
+  title TEXT,
+  year INT,
+  rating INT,
+  PRIMARY KEY ((title, year), email)
+);
+```
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

@@ -20,21 +20,47 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Design query Q4</div>
+<div class="step-title">Create table "movies"</div>
 
-✅ Find ids and names of all shopping carts that belong to user `jen`; order by cart name (asc):
- 
-<details>
-  <summary>Solution</summary>
+Our second table will store information about movies as shown below.  To define 
+this table with *single-row partitions*, we can use `title` and `year`
+as a *composite partition key*.
 
+| title             | year | duration | avg_rating |
+|-------------------|------|----------|------------|
+|Alice in Wonderland| 2010 |   108    |    6.00    |
+|Alice in Wonderland| 1951 |    75    |    7.08    |
+
+✅ Create the table:
 ```
-SELECT user_id, cart_name, 
-       cart_id, cart_is_active
-FROM carts_by_user
-WHERE user_id = 'jen';
+CREATE TABLE movies (
+  title TEXT,
+  year INT,
+  duration INT,
+  avg_rating FLOAT,
+  PRIMARY KEY ((title, year))
+);
 ```
 
-</details>
+✅ Insert the rows:
+```
+INSERT INTO movies (title, year, duration, avg_rating) 
+VALUES ('Alice in Wonderland', 2010, 108, 6.00);
+INSERT INTO movies (title, year, duration, avg_rating) 
+VALUES ('Alice in Wonderland', 1951, 75, 7.08);
+```
+
+✅ Retrieve one row:
+```
+SELECT * FROM movies
+WHERE title = 'Alice in Wonderland'
+  AND year = 2010;
+```
+
+✅ Retrieve all rows:
+```
+SELECT * FROM movies;
+```
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

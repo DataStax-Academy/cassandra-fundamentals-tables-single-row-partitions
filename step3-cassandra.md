@@ -20,38 +20,29 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Populate tables</div>
+<div class="step-title">Connect to Cassandra and create a keyspace</div>
 
-✅ Execute the CQL script to insert sample data:
+✅ Start Cassandra:
 ```
-SOURCE 'assets/shopping_cart_data.cql'
-```
-
-✅ Retrieve all rows from table `carts_by_user`:
-```
-SELECT user_id, cart_name, 
-       cart_id, cart_is_active
-FROM carts_by_user;        
+./cassandra
 ```
 
-✅ Retrieve all rows from table `items_by_id`:
+✅ Start the CQL shell:
 ```
-SELECT * FROM items_by_id;
-```
-
-✅ Retrieve all rows from materialized view `items_by_name`:
-```
-SELECT * FROM items_by_name;                    
+cqlsh
 ```
 
-✅ Retrieve all rows from table `items_by_cart`:
+✅ Create the keyspace:
 ```
-SELECT cart_id, timestamp, item_id 
-FROM items_by_cart; 
+CREATE KEYSPACE killr_video
+WITH replication = {
+  'class': 'NetworkTopologyStrategy', 
+  'DC-Houston': 1 };
+```
 
-SELECT cart_id, item_id, item_price, 
-       quantity, cart_subtotal 
-FROM items_by_cart; 
+✅ Set the current working keyspace:
+```
+USE killr_video;
 ```
 
 <!-- NAVIGATION -->

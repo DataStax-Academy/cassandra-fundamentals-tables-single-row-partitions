@@ -20,38 +20,43 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Populate tables</div>
+<div class="step-title">Connect to Astra DB and create a database</div>
 
-✅ Execute the CQL script to insert sample data:
-```
-SOURCE 'assets/shopping_cart_dataset.cql'
-```
+✅ Create an application token to access Astra. Skip this step is you already have a token.
 
-✅ Retrieve all rows from table `carts_by_user`:
-```
-SELECT user_id, cart_name, 
-       cart_id, cart_is_active
-FROM carts_by_user;        
-```
+<ul>
+  <li>Sign in (or sign up) to your Astra account at <a href="https://astra.datastax.com" target="_blank">astra.datastax.com</a></li>
+  <li>Create an application token by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a></li>
+</ul>
 
-✅ Retrieve all rows from table `items_by_id`:
+You can reuse the same token in our other scenarios, too.
+
+✅ Setup Astra CLI by providing your application token:
 ```
-SELECT * FROM items_by_id;
+astra setup
 ```
 
-✅ Retrieve all rows from table `items_by_name`:
+✅ List your existing Astra DB databases:
 ```
-SELECT * FROM items_by_name;                    
+astra db list
 ```
 
-✅ Retrieve all rows from table `items_by_cart`:
+✅ Create database `cassandra-fundamentals` and keyspace `killr_video` if they do not exist:
 ```
-SELECT cart_id, timestamp, item_id 
-FROM items_by_cart; 
+astra db create cassandra-fundamentals -k killr_video --if-not-exist --wait
+```
 
-SELECT cart_id, item_id, item_price, 
-       quantity, cart_subtotal 
-FROM items_by_cart; 
+This operation may take a bit longer when creating a new database or resuming an existing hibernated database.
+
+✅ Verify that database `cassandra-fundamentals` is `ACTIVE` and keyspace `killr_video` exists:
+```
+astra db get cassandra-fundamentals
+```
+
+✅ Start the CQL shell and connect to database `cassandra-fundamentals` and keyspace `killr_video`:
+```
+clear
+astra db cqlsh cassandra-fundamentals -k killr_video
 ```
 
 <!-- NAVIGATION -->

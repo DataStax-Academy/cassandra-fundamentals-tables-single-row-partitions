@@ -20,62 +20,37 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Create tables</div>
+<div class="step-title">Creating tables</div>
 
+To create a table, Cassandra Query Language has the `CREATE TABLE` statement with the following simplified syntax:
 
-✅ Create table `carts_by_user`:
-```
-CREATE TABLE IF NOT EXISTS carts_by_user (
-  user_id TEXT,
-  cart_name TEXT,
-  cart_id UUID,
-  cart_is_active BOOLEAN,
-  user_email TEXT STATIC,
-  PRIMARY KEY ((user_id),cart_name,cart_id)
-);
-```
+<pre class="non-executable-code">
+CREATE TABLE [ IF NOT EXISTS ] [keyspace_name.]table_name
+( 
+  column_name data_type [ , ... ] 
+  PRIMARY KEY ( 
+   ( partition_key_column_name  [ , ... ] )
+   [ clustering_key_column_name [ , ... ] ]
+  )     
+)
+[ WITH CLUSTERING ORDER BY 
+   ( clustering_key_column_name ASC|DESC [ , ... ] )
+];
+</pre>
 
-✅ Create table `items_by_id`:
-```
-CREATE TABLE IF NOT EXISTS items_by_id (
-  id TEXT,
-  name TEXT,
-  description TEXT,
-  price DECIMAL,
-  PRIMARY KEY ((id))
-);
-```
+First, notice that a table is created within an existing keyspace. If a *keyspace name* is omitted, the current working keyspace is used.
 
-✅ Create table `items_by_name`:
-```
-CREATE TABLE IF NOT EXISTS items_by_name (
-  name TEXT,
-  id TEXT,  
-  description TEXT,
-  price DECIMAL,
-  PRIMARY KEY ((name), id)
-);
-```
+Second, *keyspace*, *table* and *column* *names* can contain alphanumeric characters and underscores. By default, 
+names are case-insensitive, but case sensitivity can be forced by using double quotation marks around a name.
 
-✅ Create table `items_by_cart`:
-```
-CREATE TABLE IF NOT EXISTS items_by_cart (
-  cart_id UUID,
-  timestamp TIMESTAMP,
-  item_id TEXT,
-  item_name TEXT,
-  item_description TEXT,
-  item_price DECIMAL,
-  quantity INT,
-  cart_subtotal DECIMAL STATIC,
-  PRIMARY KEY ((cart_id),timestamp,item_id)
-) WITH CLUSTERING ORDER BY (timestamp DESC, item_id ASC);
-```
+Third, there are many CQL *data types*, including native, collection and user-defined data types. For now, we will use some of the simplest and self-descriptive ones like `TEXT`, `INT`, `FLOAT`, and `DATE`.
 
-✅ Verify that the four tables have been created:
-```
-DESCRIBE TABLES;
-```
+Fourth, notice that there are additional 
+parentheses around the partition key columns that can be omitted when the partition key has only one column (a.k.a. 
+*simple partition key*) and are required when the partition key has more than one column (a.k.a. 
+*composite partition key*). 
+
+Finally, when a clustering key is defined, ordering is optionally specified in the last clause with ascendant order being the default. 
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

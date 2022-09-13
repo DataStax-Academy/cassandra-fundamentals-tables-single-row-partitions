@@ -20,17 +20,62 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Design query Q2</div>
+<div class="step-title">Create table "actors"</div>
 
-✅ Find all information about an item with id `Box2`:
+Our last table will store information about movie actors as shown below. This table 
+with *single-row partitions* and a *composite partition key* is for you to define.
 
+| first_name | last_name  | dob        |
+|----------- |------------|------------|
+| Johnny     | Depp       | 1963-06-09 |
+| Anne       | Hathaway   | 1982-11-12 | 
+
+✅ Create the table:
 <details>
   <summary>Solution</summary>
 
 ```
-SELECT * 
-FROM items_by_id
-WHERE id = 'Box2';
+CREATE TABLE actors (
+  first_name TEXT,
+  last_name TEXT,
+  dob DATE,
+  PRIMARY KEY ((first_name, last_name))
+);
+```
+
+</details>
+
+✅ Insert the rows:
+<details>
+  <summary>Solution</summary>
+
+```
+INSERT INTO actors (first_name, last_name, dob) 
+VALUES ('Johnny', 'Depp', '1963-06-09');
+INSERT INTO actors (first_name, last_name, dob) 
+VALUES ('Anne', 'Hathaway', '1982-11-12');
+```
+
+</details>
+
+✅ Retrieve one row:
+<details>
+  <summary>Solution</summary>
+
+```
+SELECT * FROM actors
+WHERE first_name = 'Johnny'
+  AND last_name = 'Depp';
+```
+
+</details>
+
+✅ Retrieve all rows:
+<details>
+  <summary>Solution</summary>
+
+```
+SELECT * FROM actors;
 ```
 
 </details>
