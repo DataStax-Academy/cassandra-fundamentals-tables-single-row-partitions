@@ -37,7 +37,7 @@ with *single-row partitions* and a *simple partition key* is for you to define.
   <summary>Solution</summary>
 
 ```
-CREATE TABLE genres (
+CREATE TABLE IF NOT EXISTS genres (
   genre TEXT,
   description TEXT,
   PRIMARY KEY ((genre))

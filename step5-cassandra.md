@@ -35,7 +35,7 @@ as a *composite partition key*.
 
 ✅ Create the table:
 ```
-CREATE TABLE movies (
+CREATE TABLE IF NOT EXISTS movies (
   title TEXT,
   year INT,
   duration INT,

@@ -37,7 +37,7 @@ with *single-row partitions* and a *composite partition key* is for you to defin
   <summary>Solution</summary>
 
 ```
-CREATE TABLE actors (
+CREATE TABLE IF NOT EXISTS actors (
   first_name TEXT,
   last_name TEXT,
   dob DATE,

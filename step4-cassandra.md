@@ -35,7 +35,7 @@ as a *simple partition key*.
 
 ✅ Create the table:
 ```
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   email TEXT,
   name TEXT,
   age INT,
