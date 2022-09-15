@@ -34,7 +34,7 @@ cqlsh
 
 ✅ Create the keyspace:
 ```
-CREATE KEYSPACE killr_video
+CREATE KEYSPACE ks_single_row_partitions
 WITH replication = {
   'class': 'NetworkTopologyStrategy', 
   'DC-Houston': 1 };
@@ -42,7 +42,7 @@ WITH replication = {
 
 ✅ Set the current working keyspace:
 ```
-USE killr_video;
+USE ks_single_row_partitions;
 ```
 
 <!-- NAVIGATION -->
