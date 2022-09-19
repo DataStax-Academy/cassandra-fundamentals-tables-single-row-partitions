@@ -22,7 +22,7 @@
 
 <div class="step-title">Tables, columns, data types, rows, partitions, keys, ordering</div>
 
-A *table* in Apache Cassandra™ shares many similarities with a table in a relational database. It has named *columns* with *data types* and *rows* with *values*. A *primary key* uniquely identifies a row in a table. 
+A *table* in Apache Cassandra shares many similarities with a table in a relational database. It has named *columns* with *data types* and *rows* with *values*. A *primary key* uniquely identifies a row in a table. 
 
 There are also important differences. In Cassandra, on one hand, a table is a set of *rows* containing values and, on the other hand,
 a table is also a set of *partitions* containing rows. Specifically, each row belongs to exactly one partition and each partition contains one or more rows. A *primary key* consists of a mandatory *partition key* and optional *clustering key*, where
